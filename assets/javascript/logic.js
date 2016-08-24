@@ -1,107 +1,86 @@
- var score0;
- var score1;
- var score2;
- var score3;
- var score4;
- var score5;
- var score7;
- var score8;
- var score9;
- var score10;
+//////////////SENTIMENT API FROM twinword///////////////
+///////////////////////////////////////////////////////
+var allScores = [];//stored values from words
+$('#searchParameters').hide();
+$('#searchInput').hide();
+ $(".text_process_button").click(function(){//This is the Get Sentiment Scores button
 
+    $('#searchInput').val(final_span.textContent); //get text from textArea
+    var textString = $("#searchInput").val().trim(); //store text
 
- var word0;
- var word1;
- var word2;
- var word3;
- var word4;
- var word5;
- var word6;
- var word7;
- var word8;
- var word9;
- var word10;
-
- $(".text_process_button").click(function(){
-    $('#searchInput').val(final_span.textContent);
-    var textString = $("#searchInput").val().trim();
     console.log(textString);
 
-        $.ajax({
+        $.ajax({//the ajax method performs an asynchronos HTTP request
             url: 'https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=',
-
+            //a request for information from a database using the URL
             type: 'GET', // The HTTP Method
             data: {text: textString},
             datatype: 'json',
-            success: function (result) {
-              
-        console.log(result);
-        console.log(result.type);
-        console.log(result.score);
-        $("#sentimentScorePanel").html(result.type+"= "+result.score);
-        $("#sentimentScore").html(result.score);
-        var barWidth= Math.abs(result.score*100)+"%";
-        console.log(parseInt(barWidth));
-        $('#bar').width(barWidth);
-        console.log((Math.abs(result.score*100)));
-        if(result.type==="negative"){
-          $('#bar').addClass("progress-bar-danger");
-        } 
-        
-          else if(result.type==="positive"){
-            $('#bar').addClass("progress-bar-success");
-          }
+            success: function (result) {//when the results are back
 
+            console.log(result);
+            console.log(result.type);
+            console.log(result.score);
+            //we access Sentiment Analysis Results and write the type and score
+            $("#sentimentScorePanel").html(result.type+"= "+result.score);
+
+            $("#sentimentScore").html(result.score);
+            //The Math.abs() function returns the absolute value of a number
+            var barWidth= Math.abs(result.score*100)+"%";
+            console.log(parseInt(barWidth));
+            
+            $('#bar').width(barWidth);//apply barWidth to our progress bar
+            console.log((Math.abs(result.score*100)));
+            //assign colors to progress bar according to results type
+            if(result.type==="negative"){
+              $('#bar').addClass("progress-bar-danger");
+            }
+            else if(result.type==="positive"){
+              $('#bar').addClass("progress-bar-success");
+            }
             else {
-              $('#bar').addClass("progress-bar-warning");
+               $('#bar').addClass("progress-bar-warning");
+
             };
 
 
-        console.log(result.keywords["0"].word);
-        console.log(result.keywords["0"].score);
-        console.log(result.keywords["1"].word);
-        console.log(result.keywords["1"].score);
-        console.log(result.keywords["2"].word);
-        console.log(result.keywords["2"].score);
 
 
-          words0 = results.keywords[0].word;
-          words1 = results.keywords[1].word;
-          words2 = results.keywords[2].word;
-          words3 = results.keywords[3].word;
-          words4 = results.keywords[4].word;
-          words5 = results.keywords[5].word;
-          words6 = results.keywords[6].word;
-          words7 = results.keywords[7].word;
-          words8 = results.keywords[8].word;
-          words9 = results.keywords[9].word;
-          words10 = results.keywords[10].word;
+var fireset = [];
+
+for(var i=0; i < result.keywords.length; i++) {
+  var newWord = result.keywords[i].word
+  var capital = newWord.charAt(0).toUpperCase() + newWord.slice(1)
+  fireset.push(capital)
+  $("#word").append("<tr><td>"+capital+"</td>" + "<td>"+(parseFloat(result.keywords[i].score.toFixed(4)))+"</td></tr>")
+  allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
+}
 
 
-          score0 = results.keywords[0].score;
-          score1 = results.keywords[1].score;
-          score2 = results.keywords[2].score;
-          score3 = results.keywords[3].score;
-          score4 = results.keywords[4].score;
-          score5 = results.keywords[5].score;
-          score6 = results.keywords[6].score;
-          score7 = results.keywords[7].score;
-          score8 = results.keywords[8].score;
-          score9 = results.keywords[9].score;
-          score10 = results.keywords[10].score;
+    // Save the new price in Firebase
+    database.ref().push({
+      allScores: allScores
+    });
+
+
+          //these arrays will contain the data for the bar graph
+          var arrayWords = []; //contains the words
+          var arrayScore = []; //contains the score
+          var arrayColor = []; //array for if red or green
+          var arrayBlack = []; //however many black color sit needs
+ 
+        //for loop to add data into the arrays
+        for (var i=0; i < result.keywords.length; i++){
+          arrayWords.push(result.keywords[i].word);
+          arrayScore.push(result.keywords[i].score);
+          arrayColor.push(getColor(result.keywords[i].score));
+          arrayBlack.push('black');
         }
 
-        for (var i=0; i < 10; i++){
-          $("#wordTable").append('<p>' + result.keywords[i].word + " = " + result.keywords[i].score + '</p>');
-        }
+//////////////CHART///////////////
 
-        // $("#wordTable").append(result.keywords["0"].word+"= "+result.keywords["0"].score);
-        // $("#word2").html(result.keywords["1"].word+"= "+result.keywords["1"].score);
-        // $("#word3").html(result.keywords["2"].word+"= "+result.keywords["2"].score);  
-        // $("#word4").html(result.keywords["3"].word+"= "+result.keywords["3"].score);
-        // $("#word5").html(result.keywords["4"].word+"= "+result.keywords["4"].score); 
-
-function getColor(number){
+        //this function determines whether the bar for whatever word will be green or red on graph
+        function getColor(number){
           if (number > 0){
             return 'rgba(75, 192, 192, 0.2)'; //green
           }
@@ -109,56 +88,37 @@ function getColor(number){
             return 'rgba(255, 99, 132, 0.2)' //red
           }
         }
-
+        //start of chart info
         var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        //below is where results.word[i goes]
-        labels: [word0, word1, word2, word3, word4, word5, word6, word7, word8, word9], 
+          type: 'horizontalBar',
+          data: {
+            //words here
+            labels: arrayWords, 
 
-        datasets: [{
-            label: 'Positive',
-            data: [score0, score1, score2, score3, score4, score5, score6, score7, score8, score9], //add JSON num results here  
-            backgroundColor: [
-                getColor(score0), //this is green, for positive
-                getColor(score1),
-                getColor(score2), //this is red, for negative
-                getColor(score3), 
-                getColor(score4),
-                getColor(score5),
-                getColor(score6),
-                getColor(score7),
-                getColor(score8),
-                getColor(score9)
-            ],
-            borderColor: [
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black'
-            ],
-            borderWidth: 2
-        },
+            datasets: [{
+              label: 'Positive Sentiment',
+              //scores below
+              display: false,
+              data: arrayScore, //add JSON num results here  
+              backgroundColor: arrayColor,
+              borderColor: arrayBlack,
+              borderWidth: 2
+              },
 
-        {
-            //this is for the Negative part of the legend
-            label: 'Negative',
-            data: 0,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'black',
-            borderWidth: 2
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
+              {
+                //this is for the Negative part of the legend
+                label: 'Negative Sentiment',
+                data: 0,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'black',
+                borderWidth: 2
+              }]   
+          },
+    
+          options: {
+            scales: {
+              yAxes: [{
                 scaleLabel: {
                     display: true,
                     labelString: 'WORD'
@@ -166,8 +126,8 @@ function getColor(number){
                 ticks: {
                     beginAtZero:true
                 }
-            }],
-            xAxes: [{
+              }],
+              xAxes: [{
                 scaleLabel: {
                     display: true,
                     labelString: 'SENTIMENT SCORE'
@@ -175,10 +135,10 @@ function getColor(number){
                 ticks: {
                     beginAtZero:true
                 }
-            }]
-        }
-    }
-
+              }]
+            }
+          }
+        });     
             },
             error: function (err) {
                 alert(err);
@@ -190,9 +150,16 @@ function getColor(number){
 
     });
 
+var avg = 0;
+
+for (var i = 0; i < allScores.length; i++){
+    avg += allScores[i]/allScores.length;
+}
+console.log ('This is the mean ' + avg);
 
 
-
+//////////////Google Cloud Speech API ///////////////
+/////////////////////////////////////////////////////
 
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -257,12 +224,15 @@ var langs =
                      ['yue-Hant-HK', '粵語 (香港)']],
  ['日本語',           ['ja-JP']],
  ['Lingua latīna',   ['la']]];
+
 for (var i = 0; i < langs.length; i++) {
   select_language.options[i] = new Option(langs[i][0], i);
 }
+
 select_language.selectedIndex = 6;
 updateCountry();
 select_dialect.selectedIndex = 6;
+
 showInfo('info_start');
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
@@ -279,6 +249,7 @@ var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
 var start_timestamp;
+
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
@@ -291,6 +262,7 @@ if (!('webkitSpeechRecognition' in window)) {
     showInfo('info_speak_now');
     start_img.src = 'mic-animate.gif';
   };
+
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
       start_img.src = 'mic.gif';
@@ -311,6 +283,7 @@ if (!('webkitSpeechRecognition' in window)) {
       ignore_onend = true;
     }
   };
+
   recognition.onend = function() {
     recognizing = false;
     if (ignore_onend) {
@@ -333,6 +306,7 @@ if (!('webkitSpeechRecognition' in window)) {
       createEmail();
     }
   };
+
   recognition.onresult = function(event) {
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
@@ -345,24 +319,28 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
-    if (final_transcript || interim_transcript) {
-      showButtons('inline-block');
-    }
+    // if (final_transcript || interim_transcript) {
+    //   showButtons('inline-block');
+    // }
   };
 }
+
 function upgrade() {
   start_button.style.visibility = 'hidden';
   showInfo('info_upgrade');
 }
+
 var two_line = /\n\n/g;
 var one_line = /\n/g;
 function linebreak(s) {
   return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
 }
+
 var first_char = /\S/;
 function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
+
 function createEmail() {
   var n = final_transcript.indexOf('\n');
   if (n < 0 || n >= 80) {
@@ -393,6 +371,7 @@ function createEmail() {
 //   email_info.style.display = 'inline-block';
 //   showInfo('');
 // }
+
 function startButton(event) {
   if (recognizing) {
     recognition.stop();
@@ -406,9 +385,10 @@ function startButton(event) {
   interim_span.innerHTML = '';
   start_img.src = 'mic-slash.gif';
   showInfo('info_allow');
-  showButtons('none');
+  // showButtons('none');
   start_timestamp = event.timeStamp;
 }
+
 function showInfo(s) {
   if (s) {
     for (var child = info.firstChild; child; child = child.nextSibling) {
@@ -432,13 +412,3 @@ function showInfo(s) {
 //   copy_info.style.display = 'none';
 //   email_info.style.display = 'none';
 // }
- 
-
-
-
-
-
-
-
-
-
