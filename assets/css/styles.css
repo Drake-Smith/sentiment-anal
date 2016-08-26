@@ -25,6 +25,9 @@ body{
 	color:white;
 	display:block;
 }
+#chart {
+  margin-bottom: 20px;
+}
 
 #searchInput{
 
