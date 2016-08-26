@@ -132,6 +132,18 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                 data: {   
                     labels: arrayWords, //words here
                     datasets: [{
+
+//this is for the Negative part of the legend
+                        label: 'Negative Sentiment',
+                        data: 0,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'black',
+                        borderWidth: 2
+
+
+                    },
+
+                    {
                         label: 'Positive Sentiment',
                         //scores below
                         display: false,
@@ -139,15 +151,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                         backgroundColor: arrayColor,
                         borderColor: arrayBlack,
                         borderWidth: 2
-                    },
-
-                    {
-                        //this is for the Negative part of the legend
-                        label: 'Negative Sentiment',
-                        data: 0,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'black',
-                        borderWidth: 2
+                        
                     }]
                 },
 
