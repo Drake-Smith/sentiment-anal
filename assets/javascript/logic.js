@@ -411,6 +411,7 @@ function createEmail() {
 function startButton(event) {
     if (recognizing) {
         recognition.stop();
+        $('#submit').show(); //shows submit button only once the mic recording starts
         return;
     }
     final_transcript = '';
@@ -423,7 +424,6 @@ function startButton(event) {
     showInfo('info_allow');
     // showButtons('none');
     start_timestamp = event.timeStamp;
-    $('#submit').show();
 }
 
 function showInfo(s) {
