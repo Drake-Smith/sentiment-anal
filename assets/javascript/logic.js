@@ -129,8 +129,6 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
                 type: 'horizontalBar',
-                defaultFontSize: 20,
-                defaultFontStyle: 'bold',
                 data: {   
                     labels: arrayWords, //words here
                     datasets: [{
