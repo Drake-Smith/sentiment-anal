@@ -16,7 +16,7 @@ $(".text_process_button").on('click', function(){
 
 $('#select_language').hide(); //hide the language selecter but does not delete it
 $('#select_dialect').hide(); //hide the languge selecter but does not delete it
-$('#searchParameters').hide();
+// $('#searchParameters').hide();
 $('#searchInput').hide();
 $('#submit').hide();
 

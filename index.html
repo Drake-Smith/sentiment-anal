@@ -50,12 +50,12 @@
                  version 25 or later.</p>
             </div>
 
-    <!-- <div class="row">   
-        <div class="col-xs-12">
+            <!-- <div class="row">   
+                <div class="col-xs-12">
                 <button id="start_button" onclick="startButton(event)">
                 <img id="start_img" src="mic.gif" alt="Start"></button>
-        </div>
-    </div> -->
+             </div>
+            </div> -->
 
             <div class="center">
                 <button id="start_button" onclick="startButton(event)">
@@ -67,7 +67,7 @@
                 <span id="interim_span" class="interim"></span>
             </div>
             
-            <div class="center">
+            <!-- <div class="center"> -->
     <!--   <div class="sidebyside" style="text-align:right">
         <button id="copy_button" class="button" onclick="copyButton()">
           Copy and Paste</button>
@@ -83,7 +83,7 @@
           (See chrome://settings/handlers to change.)
         </div>
       </div> -->
-         
+            <div class="center">
                 <div id="div_language">
                     <select id="select_language" onchange="updateCountry()"></select>
                     &nbsp;&nbsp;
@@ -94,85 +94,28 @@
 
 
         <!-- Search Parameters Panel  -->
-        <div id="searchParameters" class="col-lg-12">
+<!--         <div id="searchParameters" class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Search Parameter</h3>
                 </div>
             </div>
-        </div>
-
+        </div> -->
 
         <div class="col-lg-12">
             <textarea id="searchInput"></textarea><button type="button" class="text_process_button btn btn-default btn-lg center-block" id="submit">Submit</button><br>
         </div>
-
-
-
-<!--         <div class="row">
- -->        <!-- Results Panel -->
-    <!--     <div class="col-lg-12">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Sentiment Analysis Results</h3>
-              </div>
-              <div class="panel-body" id="sentimentScorePanel"> -->
-
-
-        <!-- </div> -->
     </div>
-    <!--     </div>
-      </div> -->
+ 
 
 
     <!--  We use an Bootstrap animated striped progress bar  -->
-    <!-- <div class="progress">
-      <div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-        <span class="sr-only">80% Complete (danger)</span>
-      </div>
-    </div>
-
-        <div class="row"> -->
-        <!-- Results Panel -->
-         <!--  <div class="col-lg-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Top Words Analyzed</h3>
-              </div>
-
-            <div class="panel-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th><h3>Word</h3></th>
-                            <th><h3>Score</h3></th>
-                        </tr>
-
-                    </thead>
-                    
-                    <tbody>
-                    </tbody>
-                </table>
-              </div>
-
-            </div>
-
-
-            </div>
-          </div>
-        </div> -->
-    <!-- CHART -->
-    <!--     <div id="chart" class="row">
-          <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <canvas id="myChart"></canvas>
-            </div>
-          <div class="col-md-2"></div>
-        </div>  -->
+  
       <!--modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h2 class="modal-title text-center" id="myModalLabel">Results</h2>
@@ -198,55 +141,42 @@
                         </div>
 
                         
-<!--                                 <div class="col-lg-12">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Sentiment Analysis Results</h3>
-                                        </div>
-                                        <div class="panel-body" id="sentimentScorePanel">
-                                        </div>
-                                    </div>
-                                </div> -->
 
                         <!-- CHART -->
-                            <div id="chart" class="row">
-                                <div class="col-lg-10 col-lg-offset-1">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                                <p></p>
-                                <p></p>
-                            </div> 
+                        <div id="chart" class="row">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <p></p>
+                            <p></p>
+                        </div> 
 
-                            <div class="row">
-                                <!-- Results Panel -->
-                                <div class="col-lg-10 col-lg-offset-1">
-                                        <table class="table table-bordered keywords">
-                                            <thead>
-                                                <tr>
-                                                    <th>Keywords</th>
-                                                    <th>Sentiment Score</th>
-                                                </tr>
-                                            </thead>
+                        <div class="row">
+                            <!-- Results Panel -->
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <table class="table table-bordered keywords">
+                                    <thead>
+                                        <tr>
+                                            <th>Keywords</th>
+                                            <th>Sentiment Score</th>
+                                        </tr>
+                                    </thead>
 
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                </div>
-
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
 
-                            <div class="row">
-                                <div class="col-lg-10 col-lg-offset-1">
-                                    <h2 class="text-center">The Average Sentiment Score Is: <span id="average"></span></h2>
-                                </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h2 class="text-center">The Average Sentiment Score Is: <span id="average"></span></h2>
                             </div>
-                            <!-- </div> -->
-                        <!-- </div> -->
+                        </div>
                     </div>
-
-
+                </div>
             </div>
-        </div>
         </div>
 
 <!-- jQuery JS -->
