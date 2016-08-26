@@ -1,3 +1,23 @@
+
+body{
+   background-image: url('../img/brushed.png');
+   font-family: 'Lato', sans-serif;
+}
+.title {
+  margin-bottom: 70px;
+  margin-top: 50px;
+}
+
+#submit {
+  background-color: red;
+}
+
+.main-title {
+  font-size: 100px;
+}
+.sub-title {
+  font-size: 35px;
+}
 .text_process_button{
 
 	background-color: #0808b7;
@@ -18,13 +38,14 @@
 }
 
 .jumbotron{
-	background-color: black;
-	color: white;
+
+	color: black;
 
 }
 
   * {
-    font-family: Verdana, Arial, sans-serif;
+    
+ 
   }
   a:link {
     color:#000;
@@ -90,7 +111,7 @@
   #results {
     font-size: 14px;
     font-weight: bold;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     padding: 15px;
     text-align: left;
     min-height: 150px;
