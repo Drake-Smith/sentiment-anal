@@ -107,7 +107,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                 arrayBlack.push('black');
             }
 
-//////////////CHART///////////////
+            //////////////CHART///////////////
 
             //this function determines whether the bar for whatever word will be green or red on graph
             function getColor(number){
@@ -119,55 +119,55 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                 }
             }
 
-            // //start of chart info
-            // var ctx = document.getElementById("myChart");
-            // var myChart = new Chart(ctx, {
-            //     type: 'horizontalBar',
-            //     data: {   
-            //         labels: arrayWords, //words here
-            //         datasets: [{
-            //             label: 'Positive Sentiment',
-            //             //scores below
-            //             display: false,
-            //             data: arrayScore, //add JSON num results here
-            //             backgroundColor: arrayColor,
-            //             borderColor: arrayBlack,
-            //             borderWidth: 2
-            //         },
+            //start of chart info
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {   
+                    labels: arrayWords, //words here
+                    datasets: [{
+                        label: 'Positive Sentiment',
+                        //scores below
+                        display: false,
+                        data: arrayScore, //add JSON num results here
+                        backgroundColor: arrayColor,
+                        borderColor: arrayBlack,
+                        borderWidth: 2
+                    },
 
-            //         {
-            //             //this is for the Negative part of the legend
-            //             label: 'Negative Sentiment',
-            //             data: 0,
-            //             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            //             borderColor: 'black',
-            //             borderWidth: 2
-            //         }]
-            //     },
+                    {
+                        //this is for the Negative part of the legend
+                        label: 'Negative Sentiment',
+                        data: 0,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'black',
+                        borderWidth: 2
+                    }]
+                },
 
-            //     options: {
-            //         scales: {
-            //             yAxes: [{
-            //                 scaleLabel: {
-            //                     display: true,
-            //                     labelString: 'WORD'
-            //                 },
-            //                 ticks: {
-            //                     beginAtZero:true
-            //                 }
-            //             }],
-            //             xAxes: [{
-            //                 scaleLabel: {
-            //                     display: true,
-            //                     labelString: 'SENTIMENT SCORE'
-            //                 },
-            //                 ticks: {
-            //                     beginAtZero:true
-            //                 }
-            //             }]
-            //         }
-            //     }
-            // });
+                options: {
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'WORD'
+                            },
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'SENTIMENT SCORE'
+                            },
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
         },
         error: function (err) {
             alert(err);

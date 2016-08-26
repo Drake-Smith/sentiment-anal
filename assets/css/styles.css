@@ -109,13 +109,12 @@ body{
     visibility: hidden;
   }
   #results {
-    font-size: 25px;
-/*    font-weight: bold;
-*/    /*border: 1px solid #ddd;*/
+    font-size: 14px;
+    font-weight: bold;
+    /*border: 1px solid #ddd;*/
     padding: 15px;
     text-align: left;
     min-height: 150px;
-    width: 75%;
   }
   #start_button {
     border: 0;
