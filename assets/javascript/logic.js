@@ -42,9 +42,9 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             avg = result.score;
             //we access Sentiment Analysis Results and write the type and score
             //$("#sentimentScorePanel").html(result.type+" = "+result.score);
-            var scorePercent = Math.abs(result.score * 100);
+            var scorePercent = Math.round(Math.abs(result.score * 100));
             // $('#sentiment').html(result.type);
-            $('#sentscore').html(scorePercent + "%" + result.type);
+            $('#sentscore').html(scorePercent + "%" + " " result.type + ".");
 
             // $("#sentimentScore").html(result.score);
             //The Math.abs() function returns the absolute value of a number
