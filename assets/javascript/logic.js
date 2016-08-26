@@ -191,7 +191,7 @@ for(var i=0; i < result.keywords.length; i++) {
     });
 
     $("#myModal").on("hidden.bs.modal modal-lg", function () {
-
+        location.reload(); //this reloads page when u x out
     });
 
 
