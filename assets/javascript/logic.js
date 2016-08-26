@@ -129,29 +129,28 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
                 type: 'horizontalBar',
+                defaultFontSize: 20,
+                defaultFontStyle: 'bold',
                 data: {   
                     labels: arrayWords, //words here
                     datasets: [{
-
-//this is for the Negative part of the legend
+                        //this is for the Negative part of the legend
                         label: 'Negative Sentiment',
                         data: 0,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'black',
                         borderWidth: 2
-
-
                     },
 
                     {
                         label: 'Positive Sentiment',
                         //scores below
-                        display: false,
+                        display: true,
+                        text: "Sentiment Analysis",
                         data: arrayScore, //add JSON num results here
                         backgroundColor: arrayColor,
                         borderColor: arrayBlack,
-                        borderWidth: 2
-                        
+                        borderWidth: 2                
                     }]
                 },
 
