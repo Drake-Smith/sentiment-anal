@@ -100,7 +100,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
             }
 
-            $('#average').html(totalMean); //add the total Average score to the modal results
+            //$('#average').html(totalMean); //add the total Average score to the modal results
 
             //these arrays will contain the data for the bar graph
             var arrayWords = []; //contains the words
