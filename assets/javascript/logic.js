@@ -1,3 +1,5 @@
+//sentiment analysis test
+
 //////////////SENTIMENT API FROM twinword///////////////
 ///////////////////////////////////////////////////////
 var allScores = [];//stored values from words
@@ -16,6 +18,8 @@ $('#select_language').hide(); //hide the language selecter but does not delete i
 $('#select_dialect').hide(); //hide the languge selecter but does not delete it
 $('#searchParameters').hide();
 $('#searchInput').hide();
+    $('#submit').hide();
+
 
 $(".text_process_button").click(function(){//This is the Get Sentiment Scores button
 
@@ -63,22 +67,22 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
 
 
             if(result.score > .50) {
-                $("#face").html("<img src='assets/img/amazing.png' style='width: 200px'/>");
+                $("#face").append("<img src='assets/img/amazing.png' style='width: 200px'/>");
                 $("#myModalLabel").append("Your Life Is Amazing. Well done.");
             } else if (result.score > .40){
-                $("#face").html("<img src='assets/img/cool.png' style='width: 200px'/>");
+                $("#face").append("<img src='assets/img/cool.png' style='width: 200px'/>");
                 $("#myModalLabel").append("You Seem To Be Doing Quite Well.");
             } else if (result.score >= 0) {
-                $("#face").html("<img src='assets/img/neutral.png' style='width: 200px'/>")
+                $("#face").append("<img src='assets/img/neutral.png' style='width: 200px'/>")
                 $("#myModalLabel").append("Your Life Could Be Better..");
             } else if (result.score < -.30) {
-                $("#face").html("<img class='center-block' src='assets/img/unamused.png' style='width: 200px'/>")
+                $("#face").append("<img class='center-block' src='assets/img/unamused.png' style='width: 200px'/>")
                 $("#myModalLabel").append("How Did It Come To This???");
             } else if (result.score < -.40) {
-                $("#face").html("<img src='assets/img/sad.jpg' style='width: 200px'/>")
+                $("#face").append("<img src='assets/img/sad.jpg' style='width: 200px'/>")
                 $("#myModalLabel").append("Your Life Is Garbage! Give Up Already!");
             } else {
-                $("#face").html("<img src='assets/img/dead.png' style='width: 200px'/>")
+                $("#face").append("<img src='assets/img/dead.png' style='width: 200px'/>")
                 $("#myModalLabel").append("You Have No Pulse.");
             }
 
@@ -419,6 +423,7 @@ function startButton(event) {
     showInfo('info_allow');
     // showButtons('none');
     start_timestamp = event.timeStamp;
+    $('#submit').show();
 }
 
 function showInfo(s) {
