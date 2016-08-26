@@ -18,7 +18,7 @@ $('#select_language').hide(); //hide the language selecter but does not delete i
 $('#select_dialect').hide(); //hide the languge selecter but does not delete it
 $('#searchParameters').hide();
 $('#searchInput').hide();
-    $('#submit').hide();
+$('#submit').hide();
 
 
 $(".text_process_button").click(function(){//This is the Get Sentiment Scores button
@@ -41,9 +41,11 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             console.log(result.score);
             avg = result.score;
             //we access Sentiment Analysis Results and write the type and score
-            $("#sentimentScorePanel").html(result.type+" = "+result.score);
+            //$("#sentimentScorePanel").html(result.type+" = "+result.score);
+            $('#sentiment').html(result.type);
+            $('#sentscore').html(result.score);
 
-            $("#sentimentScore").html(result.score);
+            // $("#sentimentScore").html(result.score);
             //The Math.abs() function returns the absolute value of a number
             var barWidth= Math.abs(result.score*100)+"%";
             console.log(parseInt(barWidth));
@@ -66,25 +68,25 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             console.log(avg);
 
 
-            if(result.score > .50) {
-                $("#face").append("<img src='assets/img/amazing.png' style='width: 200px'/>");
-                $("#myModalLabel").append("Your Life Is Amazing. Well done.");
-            } else if (result.score > .40){
-                $("#face").append("<img src='assets/img/cool.png' style='width: 200px'/>");
-                $("#myModalLabel").append("You Seem To Be Doing Quite Well.");
-            } else if (result.score >= 0) {
-                $("#face").append("<img src='assets/img/neutral.png' style='width: 200px'/>")
-                $("#myModalLabel").append("Your Life Could Be Better..");
-            } else if (result.score < -.30) {
-                $("#face").append("<img class='center-block' src='assets/img/unamused.png' style='width: 200px'/>")
-                $("#myModalLabel").append("How Did It Come To This???");
-            } else if (result.score < -.40) {
-                $("#face").append("<img src='assets/img/sad.jpg' style='width: 200px'/>")
-                $("#myModalLabel").append("Your Life Is Garbage! Give Up Already!");
-            } else {
-                $("#face").append("<img src='assets/img/dead.png' style='width: 200px'/>")
-                $("#myModalLabel").append("You Have No Pulse.");
-            }
+            // if(result.score > .50) {
+            //     $("#face").append("<img src='assets/img/amazing.png' style='width: 200px'/>");
+            //     $("#myModalLabel").append("Your Life Is Amazing. Well done.");
+            // } else if (result.score > .40){
+            //     $("#face").append("<img src='assets/img/cool.png' style='width: 200px'/>");
+            //     $("#myModalLabel").append("You Seem To Be Doing Quite Well.");
+            // } else if (result.score >= 0) {
+            //     $("#face").append("<img src='assets/img/neutral.png' style='width: 200px'/>")
+            //     $("#myModalLabel").append("Your Life Could Be Better..");
+            // } else if (result.score < -.30) {
+            //     $("#face").append("<img class='center-block' src='assets/img/unamused.png' style='width: 200px'/>")
+            //     $("#myModalLabel").append("How Did It Come To This???");
+            // } else if (result.score < -.40) {
+            //     $("#face").append("<img src='assets/img/sad.jpg' style='width: 200px'/>")
+            //     $("#myModalLabel").append("Your Life Is Garbage! Give Up Already!");
+            // } else {
+            //     $("#face").append("<img src='assets/img/dead.png' style='width: 200px'/>")
+            //     $("#myModalLabel").append("You Have No Pulse.");
+            // }
 
             var fireset = [];
 
