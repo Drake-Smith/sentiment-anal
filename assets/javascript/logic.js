@@ -92,11 +92,11 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             var fireset = [];
 
             for(var i=0; i < result.keywords.length; i++) {
-            var newWord = result.keywords[i].word
-            var capital = newWord.charAt(0).toUpperCase() + newWord.slice(1)
-            fireset.push(capital)
+            var newWord = result.keywords[i].word;
+            var capital = newWord.charAt(0).toUpperCase() + newWord.slice(1);
+            fireset.push(capital);
             // $(".keywords > tbody").append("<tr><td>"+capital+"</td>" + "<td>"+(parseFloat(result.keywords[i].score.toFixed(4)))+"</td></tr>")
-            $(".keywords > tbody").append("<tr><td>" + results.keywords[i].word + "</td>" + "<td>" results.keywords[i].score + "</td><tr>");
+            $(".keywords > tbody").append("<tr><td>" + results.keywords[i].word + "</td>" + "<td>" + results.keywords[i].score + "</td><tr>");
             allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
             }
 
