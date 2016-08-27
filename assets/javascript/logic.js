@@ -14,10 +14,12 @@ $("#submit").on('click', function(){
       return a + b;
   }
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) > 0){
-      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "%" + pos + " and also total num user=" + totalNumUsers);
+      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
+      $('#posOrNeg').append(pos);
     } 
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) < 0){
-      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "%" + neg + " and also total num user=" + totalNumUsers);
+      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
+      $('#posOrNeg').append(neg);
     }
 
 });
