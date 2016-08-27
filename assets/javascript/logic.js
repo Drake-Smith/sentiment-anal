@@ -17,12 +17,12 @@ $("#submit").on('click', function(){
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) > 0){
       // $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
       // $('#posOrNeg').append(pos);
-       $(".averageScore > tbody").append("<tr><td class='col-md-2'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-2'>" + pos + "</td><td class='col-md-2'>" + "# users" + "</td><tr>");
+       $(".averageScore > tbody").append("<tr><td class='col-md-1'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-1'>" + pos + "</td><td class='col-md-1'>" + "# users" + "</td><tr>");
     } 
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) < 0){
       // $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
       // $('#posOrNeg').append(neg);
-       $(".averageScore > tbody").append("<tr><td class='col-md-2'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td class='col-md-2'>" + "<td class='col-md-2'>" + neg + "</td><td class='col-md-2'>" + "# users" + "</td><tr>");
+       $(".averageScore > tbody").append("<tr><td class='col-md-1'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-1'>" + neg + "</td><td class='col-md-1'>" + "# users" + "</td><tr>");
     }
 
    
@@ -115,7 +115,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             var capital = newWord.charAt(0).toUpperCase() + newWord.slice(1);
             fireset.push(capital);
             // $(".keywords > tbody").append("<tr><td>"+capital+"</td>" + "<td>"+(parseFloat(result.keywords[i].score.toFixed(4)))+"</td></tr>")
-            $(".keywords > tbody").append("<tr><td class='col-md-2'>" + result.keywords[i].word + "</td>" + "<td class='col-md-2'>" + result.keywords[i].score + "</td><tr>");
+            $(".keywords > tbody").append("<tr><td class='col-md-1'>" + result.keywords[i].word + "</td>" + "<td class='col-md-1'>" + result.keywords[i].score + "</td><tr>");
             allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
             }
 
