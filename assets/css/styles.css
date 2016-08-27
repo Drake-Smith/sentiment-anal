@@ -4,8 +4,8 @@ body{
    font-family: 'Lato', sans-serif;
 }
 .title {
-  margin-bottom: 70px;
-  margin-top: 50px;
+  margin-bottom: 50px;
+
 }
 
 #submit {
@@ -121,7 +121,7 @@ body{
     padding: 15px;
     text-align: left;
     min-height: 50px;
-    width: 50%;
+    width: 65%;
   }
   #start_button {
     border: 0;
@@ -131,4 +131,6 @@ body{
   .button-div {
     margin-top: 20px;
   }
-
+.header {
+  font-weight: bold;
+}
