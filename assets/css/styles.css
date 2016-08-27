@@ -135,11 +135,14 @@ body{
   font-weight: bold;
 }
 .progress {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 #myChart {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
-.avgScore {
+/*.avgScore {
   margin-bottom: 30px;
+}*/
+.avg-div {
+  margin-bottom: 40px;
 }
