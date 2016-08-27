@@ -141,10 +141,12 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             //this function determines whether the bar for whatever word will be green or red on graph
             function getColor(number){
                 if (number > 0){
-                    return 'rgba(75, 192, 192, 0.2)'; //green
+                    //return 'rgba(75, 192, 192, 0.2)'; //green
+                    return 'green';
                 }
                 else {
-                    return 'rgba(255, 99, 132, 0.2)' //red
+                    //return 'rgba(255, 99, 132, 0.2)'; //red
+                    return 'red';
                 }
             }
 
@@ -158,9 +160,10 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                         //this is for the Negative part of the legend
                         label: 'Negative Sentiment',
                         data: 0,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        //backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        backgroundColor: 'red',
                         borderColor: 'black',
-                        borderWidth: 2
+                        borderWidth: 1
                     },
 
                     {
@@ -171,7 +174,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                         data: arrayScore, //add JSON num results here
                         backgroundColor: arrayColor,
                         borderColor: arrayBlack,
-                        borderWidth: 2                
+                        borderWidth: 1               
                     }]
                 },
 
