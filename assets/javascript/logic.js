@@ -15,14 +15,14 @@ $("#submit").on('click', function(){
   }
     //average
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) > 0){
-      // $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
-      // $('#posOrNeg').append(pos);
-       $(".averageScore > tbody").append("<tr><td class='col-md-1'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-1'>" + pos + "</td><td class='col-md-1'>" + "# users" + "</td><tr>");
+      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
+      $('#posOrNeg').append(pos);
+       //$(".averageScore > tbody").append("<tr><td class='col-md-1'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-1'>" + pos + "</td><td class='col-md-1'>" + "# users" + "</td><tr>");
     } 
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) < 0){
-      // $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
-      // $('#posOrNeg').append(neg);
-       $(".averageScore > tbody").append("<tr><td class='col-md-1'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-1'>" + neg + "</td><td class='col-md-1'>" + "# users" + "</td><tr>");
+      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
+      $('#posOrNeg').append(neg);
+       //$(".averageScore > tbody").append("<tr><td class='col-md-1'>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td class='col-md-1'>" + neg + "</td><td class='col-md-1'>" + "# users" + "</td><tr>");
     }
 
    
