@@ -1,4 +1,3 @@
-/*sentiment analysis test*/
 
 body{
    background-image: url('../img/brushed.png');
@@ -18,6 +17,7 @@ body{
 }
 .sub-title {
   font-size: 35px;
+
 }
 .text_process_button{
 
@@ -46,7 +46,9 @@ body{
 	color: black;
 
 }
-
+.infotext {
+  font-size: 16px;
+}
   * {
     
  

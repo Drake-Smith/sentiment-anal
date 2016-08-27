@@ -1,4 +1,3 @@
-//sentiment analysis test
 
 //////////////SENTIMENT API FROM twinword///////////////
 ///////////////////////////////////////////////////////
@@ -6,13 +5,23 @@ var allScores = [];//stored values from words
 var textString;
 var avg;
 var usersAvg = [];
+var pos = 'positive';
+var neg = 'negative'
 
-$(".text_process_button").on('click', function(){
-    for (var i = 0; i < usersAvg.length; i++){
-        var totalMean = usersAvg[i]/usersAvg.length;
+
+$("#submit").on('click', function(){
+  function getSum(a, b) {
+      return a + b;
+  }
+    if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) > 0){
+      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "%" + pos);
+    } 
+    if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) < 0){
+      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "%" + neg);
     }
-    console.log ('The mean is: ' + totalMean);
+
 });
+
 
 $('#select_language').hide(); //hide the language selecter but does not delete it
 $('#select_dialect').hide(); //hide the languge selecter but does not delete it
@@ -22,6 +31,9 @@ $('#submit').hide();
 
 
 $(".text_process_button").click(function(){//This is the Get Sentiment Scores button
+
+
+
 
     $('#searchInput').val(final_span.textContent); //get text from textArea
     textString = $("#searchInput").val().trim(); //store text
@@ -39,7 +51,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             console.log(result);
             console.log(result.type);
             console.log(result.score);
-            avg = result.score;
+            avg = result.score * 100;
             //we access Sentiment Analysis Results and write the type and score
             //$("#sentimentScorePanel").html(result.type+" = "+result.score);
             var scorePercent = Math.round(Math.abs(result.score * 100));
@@ -62,12 +74,12 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                 $('#bar').addClass("progress-bar-success");
             }
             else {
+
                 $('#bar').addClass("progress-bar-warning");
+
             };
 
-            console.log("HELLO???");
             console.log(avg);
-
 
             // if(result.score > .50) {
             //     $("#face").append("<img src='assets/img/amazing.png' style='width: 200px'/>");
@@ -99,6 +111,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             $(".keywords > tbody").append("<tr><td>" + result.keywords[i].word + "</td>" + "<td>" + result.keywords[i].score + "</td><tr>");
             allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
             }
+
 
             //$('#average').html(totalMean); //add the total Average score to the modal results
 
@@ -188,14 +201,30 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
         }).done(function(response) {
             $("#myModal").modal({ keyboard: false })
             $("#myModal").modal('show')
+            firebase.auth().signInAnonymously().catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            })
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    var isAnonymous = user.isAnonymous;
+                    var uid = user.uid;
+                    console.log(uid)
+                    dataRef.ref().on('value', function(snapshot) {
+                        dataRef.ref('users/'+uid).set({
+                            avg: avg,
+                            textString: textString,
+                        });
+                    });
+                }
             });
-
+        });
 });
 
-    $("#myModal").on("hidden.bs.modal modal-lg", function () {
-        location.reload(); //this reloads page when u x out
-    });
 
+$("#myModal").on("hidden.bs.modal modal-lg", function () {
+    location.reload(); //this reloads page when u x out
+});
 
 
 //////////////Google Cloud Speech API ///////////////
