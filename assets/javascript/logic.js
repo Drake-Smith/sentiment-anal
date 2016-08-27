@@ -116,11 +116,11 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                 fireset.push(capital);
                 if (result.keywords[i].score > 0){
                     // $(".keywords > tbody").append("<tr><td>"+capital+"</td>" + "<td>"+(parseFloat(result.keywords[i].score.toFixed(4)))+"</td></tr>")
-                    $(".positive-keywords > tbody").append("<tr><td class='col-md-1'>" + result.keywords[i].word + "</td>" + "<td class='col-md-1'>" + result.keywords[i].score + "</td><tr>");
+                    $(".positive-keywords > tbody").append("<tr><td>" + result.keywords[i].word + "</td>" + "<td>" + result.keywords[i].score + "</td><tr>");
                     allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
                 } else {
 
-                    $(".negative-keywords > tbody").append("<tr><td class='col-md-1'>" + result.keywords[i].word + "</td>" + "<td class='col-md-1'>" + result.keywords[i].score + "</td><tr>");
+                    $(".negative-keywords > tbody").append("<tr><td>" + result.keywords[i].word + "</td>" + "<td>" + result.keywords[i].score + "</td><tr>");
                     allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
                 }
             }
