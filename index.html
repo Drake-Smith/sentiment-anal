@@ -126,7 +126,7 @@
 
                             <div class="row avgScore">
                                 <div class="col-lg-8 col-lg-offset-2">
-                                    <h3>The average sentiment, based on data from <span id="totalUsers">#</span> total users, is <span id="posOrNeg"></span> with a strength index of <span id="average"></span>%.</h3>
+                                    <h3 class="avgSent">The average sentiment, based on data from <span id="totalUsers">#</span> total users, is <span id="posOrNeg"></span> with a strength index of <span id="average"></span>%.</h3>
                                 </div>
                             </div>
                             
@@ -164,11 +164,11 @@
 
                         <div class="row">
                             <!-- Results Panel -->
-                            <div class="col-lg-6 col-lg-offset-3">
-                                <table class="table keywords">
+                            <div class="col-lg-6">
+                                <table class="table positive-keywords">
                                     <thead>
                                         <tr>
-                                            <th class="header col-md-1">Keywords</th>
+                                            <th class="header col-md-1">Positive Keywords</th>
                                             <th class="header col-md-1">Sentiment Score</th>
                                         </tr>
                                     </thead>
@@ -178,6 +178,19 @@
                                 </table>
                             </div>
 
+                            <div class="col-lg-6">
+                                <table class="table negative-keywords">
+                                    <thead>
+                                        <tr>
+                                            <th class="header col-md-1">Negative Keywords</th>
+                                            <th class="header col-md-1">Sentiment Score</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
 

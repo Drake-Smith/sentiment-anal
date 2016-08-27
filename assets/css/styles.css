@@ -135,9 +135,12 @@ body{
   font-weight: bold;
 }
 .progress {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 #chart {
+  margin-bottom: 40px;
+}
+.avgSent {
   margin-bottom: 40px;
 }
 /*.avgScore {
