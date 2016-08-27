@@ -39,9 +39,6 @@ $('#submit').hide();
 
 $(".text_process_button").click(function(){//This is the Get Sentiment Scores button
 
-
-
-
     $('#searchInput').val(final_span.textContent); //get text from textArea
     textString = $("#searchInput").val().trim(); //store text
 
@@ -88,25 +85,19 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
 
             console.log(avg);
 
-            // if(result.score > .50) {
-            //     $("#face").append("<img src='assets/img/amazing.png' style='width: 200px'/>");
-            //     $("#myModalLabel").append("Your Life Is Amazing. Well done.");
-            // } else if (result.score > .40){
-            //     $("#face").append("<img src='assets/img/cool.png' style='width: 200px'/>");
-            //     $("#myModalLabel").append("You Seem To Be Doing Quite Well.");
-            // } else if (result.score >= 0) {
-            //     $("#face").append("<img src='assets/img/neutral.png' style='width: 200px'/>")
-            //     $("#myModalLabel").append("Your Life Could Be Better..");
-            // } else if (result.score < -.30) {
-            //     $("#face").append("<img class='center-block' src='assets/img/unamused.png' style='width: 200px'/>")
-            //     $("#myModalLabel").append("How Did It Come To This???");
-            // } else if (result.score < -.40) {
-            //     $("#face").append("<img src='assets/img/sad.jpg' style='width: 200px'/>")
-            //     $("#myModalLabel").append("Your Life Is Garbage! Give Up Already!");
-            // } else {
-            //     $("#face").append("<img src='assets/img/dead.png' style='width: 200px'/>")
-            //     $("#myModalLabel").append("You Have No Pulse.");
-            // }
+            if(result.score > .50) {
+                $("#face").append("<img src='assets/img/amazing.png' style='width: 200px'/>");
+            } else if (result.score > .35){
+                $("#face").append("<img src='assets/img/cool.png' style='width: 200px'/>");
+            } else if (result.score >= 0) {
+                $("#face").append("<img src='assets/img/neutral.png' style='width: 200px'/>")
+            } else if (result.score < -.35) {
+                $("#face").append("<img class='center-block' src='assets/img/unamused.png' style='width: 200px'/>")
+            } else if (result.score < -.50) {
+                $("#face").append("<img src='assets/img/sad.jpg' style='width: 200px'/>")
+            } else {
+                $("#face").append("<img src='assets/img/dead.png' style='width: 200px'/>")
+            }
 
             var fireset = [];
 

@@ -9,23 +9,23 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <!--  Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
+    
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-
+    
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 </head>
 
-
 <body>
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12 title">
                 <h1 class="main-title text-center">Speak Your Mind</h1>
-                <h2 class="sub-title text-center">Analyze the positive and negative sentiments of your words.</h4>
+                <h2 class="sub-title text-center">Analyze the positive and negative sentiments of your words.</h2>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
                 <p class="infotext" id="info_denied">Permission to use microphone was denied.</p>
                 <p class="infotext" id="info_blocked">Permission to use microphone is blocked. To change,
                 go to chrome://settings/contentExceptions#media-stream</p>
-                <p iclass="infotext" d="info_upgrade">Web Speech API is not supported by this browser.
+                <p class="infotext" id="info_upgrade">Web Speech API is not supported by this browser.
                  Upgrade to <a href="//www.google.com/chrome">Chrome</a>
                  version 25 or later.</p>
             </div>
@@ -63,22 +63,6 @@
                 <textarea id="searchInput"></textarea><button type="button" class="text_process_button btn btn-default btn-lg center-block" id="submit">Submit</button>
             </div>
             
-            <!-- <div class="center"> -->
-    <!--   <div class="sidebyside" style="text-align:right">
-        <button id="copy_button" class="button" onclick="copyButton()">
-          Copy and Paste</button>
-        <div id="copy_info" class="info">
-          Press Control-C to copy text.<br>(Command-C on Mac.)
-        </div>
-      </div> -->
-    <!--   <div class="sidebyside">
-        <button id="email_button" class="button" onclick="emailButton()">
-          Create Email</button>
-        <div id="email_info" class="info">
-          Text sent to default email application.<br>
-          (See chrome://settings/handlers to change.)
-        </div>
-      </div> -->
             <div class="center">
                 <div id="div_language">
                     <select id="select_language" onchange="updateCountry()"></select>
@@ -87,123 +71,90 @@
                 </div>
             </div>
         </div>
-<!-- 
-        <div class="col-lg-12">
-            <textarea id="searchInput"></textarea><button type="button" class="text_process_button btn btn-default btn-lg center-block" id="submit">Submit</button>
-        </div> -->
     </div>
 
-    <!--  We use an Bootstrap animated striped progress bar  -->
-  
-      <!--modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
+  <!--modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h2 class="modal-title text-center" id="myModalLabel">Results</h2>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title text-center" id="myModalLabel">Results</h2>
+                </div>
+                
+                <div class="modal-body" id="face">   
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sentimentScorePanel center-block">
+                                <!-- <h3>Your Overall Sentiment: <span id="sentiment"></span></h3> -->
+                                <h3 class="text-center">Your sentiment is <span id="sentiment"></span> with a strength index of <span id="sentscore"></span></h3>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="progress">
+                                <div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                    <span class="sr-only">80% Complete (danger)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row avgScore">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <h3 class="avgSent">The average sentiment, based on data from <span id="totalUsers"></span> total users, is <span id="posOrNeg"></span> with a strength index of <span id="average"></span>%.</h3>
+                            </div>
+                        </div>    
                     </div>
                     
-                    <div class="modal-body" id="face">
-                        
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="sentimentScorePanel center-block">
-                                    <!-- <h3>Your Overall Sentiment: <span id="sentiment"></span></h3> -->
-                                    <h3 class="text-center">Your sentiment is <span id="sentiment"></span> with a strength index of <span id="sentscore"></span></h3>
-                                </div>
-                            </div>
-
-
-                            <div class="col-lg-8 col-lg-offset-2">
-                                <div class="progress">
-                                    <div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                        <span class="sr-only">80% Complete (danger)</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row avgScore">
-                                <div class="col-lg-8 col-lg-offset-2">
-                                    <h3 class="avgSent">The average sentiment, based on data from <span id="totalUsers">#</span> total users, is <span id="posOrNeg"></span> with a strength index of <span id="average"></span>%.</h3>
-                                </div>
-                            </div>
-                            
+                    <!-- CHART -->
+                    <div id="chart" class="row">
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <canvas id="myChart"></canvas>
                         </div>
-                        
-                       <!--  <div class="row"> -->
-                            <!-- Results Panel -->
-                            <!-- <div class="col-lg-8 col-lg-offset-2" class="avg-div">
-                                <p class="text-center">Here is how your results compare to the average.</p>
-                                <table class="table averageScore">
-                                    <thead>
-                                        <tr>
-                                            <th class="header col-md-1">Strength of Sentiment</th>
-                                            <th class="header col-md-1">Sentiment</th>
-                                            <th class="header col-md-1">Total # of Users</th>
-                                        </tr>
-                                    </thead>
+                    </div> 
 
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div> -->
+                    <div class="row">
+                        <!-- Results Panel -->
+                        <div class="col-lg-5 col-lg-offset-1">
+                            <table class="table positive-keywords center-block">
+                                <thead>
+                                    <tr>
+                                        <th class="headers">Positive Keywords</th>
+                                        <th class="headers">Sentiment Score</th>
+                                    </tr>
+                                </thead>
 
-                        <!-- </div> -->
-   
-
-                        
-
-                        <!-- CHART -->
-                        <div id="chart" class="row">
-                            <div class="col-lg-10 col-lg-offset-1">
-                                <canvas id="myChart"></canvas>
-                            </div>
-                        </div> 
-
-                        <div class="row">
-                            <!-- Results Panel -->
-                            <div class="col-lg-5 col-lg-offset-1">
-                                <table class="table positive-keywords center-block">
-                                    <thead>
-                                        <tr>
-                                            <th>Positive Keywords</th>
-                                            <th>Sentiment Score</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="col-lg-5">
-                                <table class="table negative-keywords center-block">
-                                    <thead>
-                                        <tr>
-                                            <th>Negative Keywords</th>
-                                            <th>Sentiment Score</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
 
+                        <div class="col-lg-5">
+                            <table class="table negative-keywords center-block">
+                                <thead>
+                                    <tr>
+                                        <th class="headers">Negative Keywords</th>
+                                        <th class="headers">Sentiment Score</th>
+                                    </tr>
+                                </thead>
 
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-<!--                         <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1">
-                                <h3 class="text-center">The Average Sentiment Score Is: <span id="average"></span></h3>
+                    <div class="row">
+                        <div class="col-lg-1 col-lg-offset-5">
+                            <div id="face" class="center-block">
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 <!-- jQuery JS -->
 <script src="assets/javascript/jquery.min.js"></script>
@@ -211,16 +162,11 @@
 <!-- Logic.js -->
 <script src="assets/javascript/logic.js"></script>
 
-
+<!-- Firebase -->
 <script src="assets/javascript/firebase.js"></script>
-
 
 <!-- Chart.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
 
-
-
 </body>
 </html>
-
-<!-- https://antoniomontalvo.github.io/Speak-Your-Mind/voicerecognition.html -->
