@@ -114,7 +114,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
                 var newWord = result.keywords[i].word;
                 var capital = newWord.charAt(0).toUpperCase() + newWord.slice(1);
                 fireset.push(capital);
-                if (results.keywords[i].score > 0){
+                if (result.keywords[i].score > 0){
                     // $(".keywords > tbody").append("<tr><td>"+capital+"</td>" + "<td>"+(parseFloat(result.keywords[i].score.toFixed(4)))+"</td></tr>")
                     $(".positive-keywords > tbody").append("<tr><td class='col-md-1'>" + result.keywords[i].word + "</td>" + "<td class='col-md-1'>" + result.keywords[i].score + "</td><tr>");
                     allScores.push(parseFloat(result.keywords[i].score.toFixed(4)));
