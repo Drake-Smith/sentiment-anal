@@ -56,7 +56,7 @@ $(".text_process_button").click(function(){//This is the Get Sentiment Scores bu
             //$("#sentimentScorePanel").html(result.type+" = "+result.score);
             var scorePercent = Math.round(Math.abs(result.score * 100));
             $('#sentiment').html((result.type).charAt(0).toUpperCase());
-            $('#sentscore').html(scorePercent + "%.";
+            $('#sentscore').html(scorePercent + "%.");
 
             // $("#sentimentScore").html(result.score);
             //The Math.abs() function returns the absolute value of a number
