@@ -5,22 +5,27 @@ var allScores = [];//stored values from words
 var textString;
 var avg;
 var usersAvg = [];
-var pos = 'positive';
-var neg = 'negative'
+var pos = 'Positive';
+var neg = 'Negative'
 
 
 $("#submit").on('click', function(){
   function getSum(a, b) {
       return a + b;
   }
+    //average
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) > 0){
-      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
-      $('#posOrNeg').append(pos);
+      // $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
+      // $('#posOrNeg').append(pos);
+       $(".averageScore > tbody").append("<tr><td>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td>" + pos + "</td><td>" + "# users" + "</td><tr>");
     } 
     if (Math.round((usersAvg.reduce(getSum)/usersAvg.length)) < 0){
-      $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
-      $('#posOrNeg').append(neg);
+      // $('#average').append(Math.round((usersAvg.reduce(getSum)/usersAvg.length)));
+      // $('#posOrNeg').append(neg);
+       $(".averageScore > tbody").append("<tr><td>" + Math.round((usersAvg.reduce(getSum)/usersAvg.length)) + "</td>" + "<td>" + neg + "</td><td>" + "# users" + "</td><tr>");
     }
+
+   
 
 });
 
